@@ -20,7 +20,7 @@ mkdir -p "$output_directory"
 for package_id in "${package_ids[@]}"; do
   lower_id="${package_id,,}"
   filename="$package_id.$version.nupkg"
-  curl --fail --silent --show-error --retry 4 \
+  curl --fail --location --silent --show-error --retry 4 \
     --user "$GITHUB_ACTOR:$GITHUB_TOKEN" \
     --output "$output_directory/$filename" \
     "$base_url/$lower_id/$lower_version/$lower_id.$lower_version.nupkg"
